@@ -16,8 +16,7 @@ class BookController extends Controller
     public function index(Book $book)
     {
 		$booksList = $book->all();
-		
-       return view('books/list', ['booksList' => $booksList]);
+		return view('books/list', ['booksList' => $booksList]);
     }
 
     /**
@@ -25,9 +24,18 @@ class BookController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $book = new Book();
+		$book-> name = "Pan Tadeusz";
+		$book-> year = "1999";
+		$book-> publication_place = "Kraków";
+		$book-> pages = "450";
+		$book-> price = "39.90";
+		$book-> save();
+		
+		return redirect('books');
+		
     }
 
     /**
@@ -49,7 +57,9 @@ class BookController extends Controller
      */
     public function show($id)
     {
-        //
+		$book = Book::find($id);
+		return view('books/show', ['book' => $book]);
+		
     }
 
     /**
@@ -60,7 +70,15 @@ class BookController extends Controller
      */
     public function edit($id)
     {
-        //
+        $book = Book::find($id);
+		$book-> name = "Quo Vadis";
+		$book-> year = "2001";
+		$book-> publication_place = "Warszawa";
+		$book-> pages = "650";
+		$book-> price = "59.90";
+		$book-> save();
+		
+		return redirect('books');
     }
 
     /**
@@ -83,6 +101,9 @@ class BookController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $book = Book::find($id);
+		$book->delete();
+		
+		return redirect('books');
     }
 }
