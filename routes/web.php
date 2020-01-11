@@ -18,6 +18,8 @@ Route::get('/', function () {
 Route::resource('books', 'Bookcontroller');
 Route::get('/books/{id}/delete', 'BookController@destroy');
 
+Route::resource('loans', 'LoanController');
 
+Route::resource('authors', 'AuthorController');
 
 
