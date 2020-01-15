@@ -21,7 +21,8 @@ Route::get('/books/search', 'BookController@search');
 
 
 Route::resource('books', 'Bookcontroller');
-Route::get('/books/{id}/delete', 'BookController@destroy');
+Route::post('/books/{id}/update', 'Bookcontroller@update');
+Route::get('/books/{id}/delete', 'Bookcontroller@destroy');
 
 Route::resource('loans', 'LoanController');
 

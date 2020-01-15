@@ -73,16 +73,9 @@ class BookController extends Controller
      */
     public function edit(BookRepository $bookRepo, $id)
     {
-		$data = [
-				name => "Quo Vadis",
-				year => "2001",
-				publication_place => "Warszawa",
-				pages => "650",
-				price => "59.90",		
-				];
-		$booksList = $bookRepo->update($data, $id);
-		
-		return redirect('books');
+		$book = $bookRepo->find($id);
+		$authors = Author::all();
+		return view('books/edit',['book' => $book, 'authors' => $authors]);
     }
 
     /**
@@ -92,10 +85,14 @@ class BookController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+  public function update(Request $request, BookRepository $bookRepo, $id)
     {
-        //
+      $data = $request->all();
+      $booksList = $bookRepo->update($data, $id);
+
+      return redirect('books');
     }
+
 
     /**
      * Remove the specified resource from storage.
