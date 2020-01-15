@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Repositories\BookRepository;
 use DB;
+use App\Models\Author;
 use App\Models\Book;
 use App\Models\Isbn;
+
+
 use Illuminate\Http\Request;
 
 
@@ -29,21 +32,9 @@ class BookController extends Controller
      */
 	public function create(BookRepository $bookRepo)
     {
-		$data = [
-				name => "Czarny dom",
-				year => "2010",
-				publication_place => "Warszawa",
-				pages => "648",
-				price => "59.90",		
-				];
-		
-		$booksList = $bookRepo->create($data);
-		
-		$isbn = new Isbn(['numer'=> '9788376483764', 'issued_by' => "Wydawca", 'issued_on' => '2010-04-20']);
-		$book->isbn()->save($isbn);
-		
-		return redirect('books');
-		
+		$authors = Author::all();
+		return view('books/create',['authors' => $authors]);
+
     }
 
     /**
@@ -52,9 +43,13 @@ class BookController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request,BookRepository $bookRepo )
     {
-        //
+
+			$data = $request->all();
+			$bookLists = $bookRepo->create($data);
+
+		return redirect('books');	
     }
 
     /**

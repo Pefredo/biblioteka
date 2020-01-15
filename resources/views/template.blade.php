@@ -25,14 +25,22 @@
                <a class="dropdown-item" href="{{ URL::to('books/cheapest') }}">Top 3 najtańszych</a>
                <a class="dropdown-item" href="{{ URL::to('books/longest') }}">Top 3 najdłuższych</a>
                <a class="dropdown-item" href="{{ URL::to('books') }}">Wszystkie</a>
+               <a class="dropdown-item" href="{{ URL::to('books/create') }}">Dodaj nową</a>
 
-						</div>
+			</div>
 				</li>
-				<li>
-					<a class="nav-link" href="{{URL::to('books/loans') }}" >Wypożyczenia</a>
+				<li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="{{ URL::to('loans') }}">Wypożyczenia</a>
+				<div class="dropdown-menu">
+					<a class="nav-link" href="{{URL::to('loans') }}" >Wszystkie</a>
+					<a class="nav-link" href="{{URL::to('loans/create') }}" >Dodaj nowe</a>
 				</li>
-				<li>
-				<a class="nav-link" href="{{URL::to('books/authors') }}" >Autorzy</a>
+				</li>
+				<li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="{{ URL::to('authors') }}">Autorzy</a>
+				<div class="dropdown-menu">
+					<a class="nav-link" href="{{URL::to('authors') }}" >Wszyscy</a>
+					<a class="nav-link" href="{{URL::to('authors/create') }}" >Dodaj nowego</a>
 				</li>
 				</ul>
 			</div>
