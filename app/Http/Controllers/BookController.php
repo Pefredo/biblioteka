@@ -3,13 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Repositories\BookRepository;
+use App\Http\Requests\StoreBook;
+use Illuminate\Http\Request;
 use DB;
 use App\Models\Author;
 use App\Models\Book;
 use App\Models\Isbn;
-
-
-use Illuminate\Http\Request;
 
 
 class BookController extends Controller
@@ -43,13 +42,12 @@ class BookController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request,BookRepository $bookRepo )
+    public function store(StoreBook $request,BookRepository $bookRepo )
     {
-
-			$data = $request->all();
-			$bookLists = $bookRepo->create($data);
-
-		return redirect('books');	
+		$data = $request->all();
+		$book = $bookRepo->create($data);
+		
+		return redirect('books');
     }
 
     /**
@@ -62,7 +60,6 @@ class BookController extends Controller
     {
 		$book = $bookRepo->find($id);
 		return view('books/show', ['book' => $book]);
-		
     }
 
     /**
