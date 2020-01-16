@@ -17,8 +17,15 @@
 		  </button>
 			<div class="collapse navbar-collapse" id="navbarNav">
 
-			<ul class="nav navbar-nav navbar-right">
-				
+				<ul class="nav navbar-nav navbar-right">
+					<li class="nav-item dropdown">
+					  <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Język</a>
+					 <div class="dropdown-menu">
+					   <a class="dropdown-item" href="{{ URL::to('language/pl') }}">Polski</a>
+						<a class="dropdown-item" href="{{ URL::to('language/en') }}">Angielski</a>
+						<a class="dropdown-item" href="{{ URL::to('language/fr') }}">Francuski</a>
+					</div>
+					</li>
 				<li class="nav-item dropdown">
              <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="{{ URL::to('books') }}">Książki</a>
              <div class="dropdown-menu">
