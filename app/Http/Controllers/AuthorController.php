@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreAuthor;
 use Illuminate\Http\Request;
 use App\Models\Author;
 use App\Models\Book;
@@ -36,7 +37,7 @@ class AuthorController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreAuthor $request)
     {
 		$data = $request->all();
         $author = new Author();

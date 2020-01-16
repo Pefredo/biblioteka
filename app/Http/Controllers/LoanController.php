@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreLoan;
+use Illuminate\Http\Request;
 use App\Models\Book;
 use App\Models\Loan;
-use Illuminate\Http\Request;
+
 
 
 class LoanController extends Controller
@@ -38,7 +40,7 @@ class LoanController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreLoan $request)
     {
         $book = Book::find($request->input('book_id'));
 		$data = $request->all();
